@@ -58,12 +58,12 @@ export function RequestServiceForm() {
     ) as Record<string, string>;
 
     const next: Errors = {};
-    if (!values.name) next.name = "Please enter your name.";
-    if (!values.phone || values.phone.replace(/\D/g, "").length < 10)
+    if (!values["name"]) next.name = "Please enter your name.";
+    if (!values["phone"] || values["phone"].replace(/\D/g, "").length < 10)
       next.phone = "Please enter a phone number we can reach you on.";
-    if (values.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
+    if (values["email"] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values["email"]))
       next.email = "Please enter a valid email address.";
-    if (!values.service) next.service = "Please choose the service you need.";
+    if (!values["service"]) next.service = "Please choose the service you need.";
 
     setErrors(next);
     if (Object.keys(next).length > 0) {
